@@ -13,3 +13,7 @@ song.set({
     artist: "Miles Davis",
     publishYear: 1959
 });
+console.log(song.get('age'))
+song.unset("age")
+song.clear();
+console.log(song.has('age'))
