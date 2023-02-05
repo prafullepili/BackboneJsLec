@@ -1,4 +1,10 @@
 var Song = Backbone.Model.extend({
+    validate: function (attrs) {
+        console.log(attrs)
+        if (!attrs.title) {
+            return "Title is required";
+        }
+    },
     default: {
         genre: "Jazz"
     }
@@ -13,7 +19,9 @@ song.set({
     artist: "Miles Davis",
     publishYear: 1959
 });
-console.log(song.get('age'))
 song.unset("age")
-console.log(song.has('age'))
-console.log(song.toJSON())
+
+console.log(song.isValid())
+console.log(song.unset("title").toJSON())
+console.log(song.isValid())
+console.log(song.validationError)
