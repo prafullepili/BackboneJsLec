@@ -1,27 +1,15 @@
-var Song = Backbone.Model.extend({
-    validate: function (attrs) {
-        console.log(attrs)
-        if (!attrs.title) {
-            return "Title is required";
-        }
-    },
-    default: {
-        genre: "Jazz"
+var Animal = Backbone.Model.extend({
+    walk: function () {
+        console.log("Animal walking...")
     }
 })
-var song = new Song({
-    age: 42
-});
-// Attributes setting
 
-song.set('title', "Blue in Green");
-song.set({
-    artist: "Miles Davis",
-    publishYear: 1959
+var Dog = Animal.extend({
+    walk: function () {
+        Animal.prototype.walk.apply(this);
+        console.log("Dog walking...")
+    }
 });
-song.unset("age")
 
-console.log(song.isValid())
-console.log(song.unset("title").toJSON())
-console.log(song.isValid())
-console.log(song.validationError)
+var dog = new Dog()
+dog.walk()
