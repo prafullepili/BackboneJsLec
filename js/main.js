@@ -1,6 +1,6 @@
 var Song = Backbone.Model.extend({
-    initialize: function () {
-        console.log("A new song has been created")
+    default: {
+        genre: "Jazz"
     }
 })
 var song = new Song({
@@ -15,5 +15,5 @@ song.set({
 });
 console.log(song.get('age'))
 song.unset("age")
-song.clear();
 console.log(song.has('age'))
+console.log(song.toJSON())
